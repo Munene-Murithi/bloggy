@@ -5,6 +5,9 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\logoutController;
 use App\Http\Controllers\termsController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\createPostController;
+use App\Http\Controllers\createCommentController;
 
 
 /*
@@ -31,3 +34,8 @@ Route::post('/register', [registerController::class, 'store']);
 
 Route::get('/terms', [termsController::class, 'showTerms'])->name('terms');
 
+Route::get('/dashboard', [dashboardController::class, 'showDashboard'])->name('dashboard');
+
+Route::get('/createPost', [createPostController::class, 'showCreatepost'])->name('CreatePost');
+
+Route::get('/createComment', [createCommentController::class, 'showCreateComment'])->name('CreateComment');
