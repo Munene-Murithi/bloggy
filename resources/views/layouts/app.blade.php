@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="./public/assets/img/favicon.ico">
+
     <title>{{ config('app.name') }}</title>
 </head>
 <body>
@@ -22,32 +24,32 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Dashboard</a>
               </li>
-             
-
             </ul>
+            <span class="nav-item dropdown me-4">@auth
+              <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{ Auth::user()->name }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+                <li><a class="dropdown-item" href="#">Phone: {{ Auth::user()->phone }}</a></li>
+                <li><a class="dropdown-item" href="#">email: {{ Auth::user()->email }}</a></li>
+                <li><hr class="dropdown-divider"></li>
+              </ul>                 
+            </span>
+            @endauth
+            
             <ul class="navbar-nav me-3">
               @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="#">logout</a>
-                  </li>@endauth
+                  <a class="nav-link" href="{{ route('logout') }}">logout</a>
+                </li>
+                  @endauth
+                @guest
                   <li class="nav-item">
-                    @guest
                     <a class=nav-link href="{{ route('login') }}">Login</a></li>
+                   <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}">Signup</a><li>
+
                     @endguest
-
-
-                <span class="nav-item dropdown me-4">
-                   
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Mary Okaka
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    
-                      <li><a class="dropdown-item" href="#">Phone</a></li>
-                      <li><a class="dropdown-item" href="#">email</a></li>
-                      <li><hr class="dropdown-divider"></li>                      
-                    </span>
-                  </li>
                 </div>
            
               </ul>

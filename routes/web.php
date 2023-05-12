@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\logoutController;
+use App\Http\Controllers\termsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +19,15 @@ use App\Http\Controllers\registerController;
 */
 
 Route::get('/login', [loginController::class, 'showLogin'])->name('login');
-Route::post('/login', [loginController::class, 'login']);
+Route::post('/login', [loginController::class, 'authenticate']);
 
-Route::get('/home', [App\Http\Controllers\homeController::class, 'showHomePage'])->name('home');
+Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
+
+
+Route::get('/', [App\Http\Controllers\homeController::class, 'showHomePage'])->name('home');
 
 Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
 Route::post('/register', [registerController::class, 'store']);
+
+Route::get('/terms', [termsController::class, 'showTerms'])->name('terms');
+
