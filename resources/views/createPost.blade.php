@@ -24,7 +24,10 @@
             </div>
 
             <div class="mb-3">
+
                 <label for="file" class="form-label">File</label>
+                <img src="" alt="" class="img-product" />
+
                 <input type="file" class="form-control" id="file" name="file">
             </div>
 
