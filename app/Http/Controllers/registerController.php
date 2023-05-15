@@ -33,6 +33,6 @@ class RegisterController extends Controller
 
         $user->save();
 
-        return redirect('/');
+        return redirect('viewPost');
     }
 }

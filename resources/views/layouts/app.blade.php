@@ -8,65 +8,129 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="icolin" type="image/png" href="./icon1.png">
+    <link href="./assets/img/favicon.png" rel="icon">
+    <link href="./assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS Files -->
+    <link href="./assets/css/variables.css" rel="stylesheet">
+    <link href="./assets/css/main.css" rel="stylesheet">
+
 
     <title>{{ config('app.name') }}</title>
 </head>
- 
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between ms-2">
-        <div class="container-fluid">
-            <a class="navbar-brand size-md" href="{{ route('home') }}">Bloggy</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Home Page</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
-                    </li>
-                </ul>
-                <span class="nav-item dropdown me-4">@auth
-                    <ul>
-                    <li><a class="dropdown-item" href="#">email: {{ Auth::user()->email }}</a></li>
-                    </ul>
-                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                        <li><a class="dropdown-item" href="#">Phone: {{ Auth::user()->phone }}</a></li>
-                        <li><a class="dropdown-item" href="#">email: {{ Auth::user()->email }}</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center">
+                <!-- Uncomment the line below if you also wish to use an image logo -->
+                <img src="./assets/img/logo.png" alt=""> 
+                <h1>Bloggy</h1>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    {{-- @auth
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Create Post here</h5>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="user-profile">
+                                <div class="profile-photo">
+                                    <img src="{{ asset('path/to/profile-photo.jpg') }}" alt="Profile Photo">
+                                </div>
+                                <div class="profile-info">
+                                    <h3>{{ $user->name }}</h3>
+                                    <p>Phone: {{ $user->phone }}</p>
+                                    <p>Email: {{ $user->email }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endauth --}}
+                    <li><a href="viewPost">Blog</a></li>
+                    <li><a href="dashboard">Single Post</a></li>
+                  
+                    
+
+                    <div>
+                        <!-- Move the div inside the ul element -->
+                        @auth
+                        <li class="dropdown">
+                            <!-- Add the dropdown class to the li element -->
+                            <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <!-- Add the dropdown-menu class -->
+                                <li><a class="dropdown-item" href="#">Phone: {{ Auth::user()->phone }}</a></li>
+                                <li><a class="dropdown-item" href="#">Email: {{ Auth::user()->email }}</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                            </ul>
                         </li>
-                    </ul>
-                </span>
-                @endauth
-
-                <ul class="navbar-nav me-3">
-                    @auth
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('logout') }}">logout</a>
-                    </li>
-                    @endauth
-                    @guest
-                    <li class="nav-item">
-                        <a class=nav-link href="{{ route('login') }}">Login</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ route('register') }}">Signup</a>
-                    <li>
-
+                        @endauth
+                        @guest
+                        <ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">Signup</a>
+                        </li>
+                        </ul>
                         @endguest
+                    </div>
+
+                    <li><a href="aboutUs">About Us</a></li>
+                    <li><a href="contact">Contact</a></li>
+
+                </ul>
+            </nav><!-- .navbar -->
+
+            <div class="position-relative">
+                <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
+                <a href="#" class="mx-2"><span class="bi-twitter"></span></a>
+                <a href="#" class="mx-2"><span class="bi-instagram"></span></a>
+
+                <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+
+                <!-- ======= Search Form ======= -->
+                <div class="search-form-wrap js-search-form-wrap">
+                    <form action="search-result.html" class="search-form">
+                        <span class="icon bi-search"></span>
+                        <input type="text" placeholder="Search" class="form-control">
+                        <button class="btn js-search-close"><span class="bi-x"></span></button>
+                    </form>
+                </div><!-- End Search Form -->
+
             </div>
 
-            </ul>
         </div>
-    </nav>
+
+    </header>
 
     @yield('content')
 
@@ -77,6 +141,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+
+    <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="./assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="./assets/vendor/aos/aos.js"></script>
+    <script src="./assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="./assets/js/main.js"></script>
 </body>
 
 </html>

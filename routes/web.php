@@ -8,6 +8,10 @@ use App\Http\Controllers\termsController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\createPostController;
 use App\Http\Controllers\createCommentController;
+use App\Http\Controllers\viewPostController;
+use App\Http\Controllers\aboutUsController;
+use App\Http\Controllers\contactController;
+
 
 
 /*
@@ -36,6 +40,14 @@ Route::get('/terms', [termsController::class, 'showTerms'])->name('terms');
 
 Route::get('/dashboard', [dashboardController::class, 'showDashboard'])->name('dashboard');
 
-Route::get('/createPost', [createPostController::class, 'showCreatepost'])->name('CreatePost');
+Route::get('/createPost', [createPostController::class, 'showCreatePost'])->name('createPost');
+Route::post('/storePost', [createPostController::class, 'store'])->name('storePost');
+
 
 Route::get('/createComment', [createCommentController::class, 'showCreateComment'])->name('CreateComment');
+
+Route::get('/viewPost', [viewPostController::class, 'showPost'])->name('viewPost');
+
+Route::get('/aboutUs', [aboutUsController::class, 'showAbout'])->name('aboutUs');
+
+Route::get('/contact', [contactController::class, 'showContact'])->name('contact');

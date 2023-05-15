@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container p-3 ">
+<body class="bg-white pt-5">
+    
+
+<div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card p-3">
@@ -122,4 +125,5 @@
         </div>
     </div>
 </div>
+</body>
 @endsection
