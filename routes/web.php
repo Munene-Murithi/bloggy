@@ -11,6 +11,8 @@ use App\Http\Controllers\createCommentController;
 use App\Http\Controllers\viewPostController;
 use App\Http\Controllers\aboutUsController;
 use App\Http\Controllers\contactController;
+use App\Http\Controllers\commentsController;
+
 
 
 
@@ -39,12 +41,16 @@ Route::post('/register', [registerController::class, 'store']);
 Route::get('/terms', [termsController::class, 'showTerms'])->name('terms');
 
 Route::get('/dashboard', [dashboardController::class, 'showDashboard'])->name('dashboard');
+// Route::get('/dashboard', [DashboardController::class, 'index']);
+
 
 Route::get('/createPost', [createPostController::class, 'showCreatePost'])->name('createPost');
 Route::post('/storePost', [createPostController::class, 'store'])->name('storePost');
 
 
 Route::get('/createComment', [createCommentController::class, 'showCreateComment'])->name('CreateComment');
+Route::post('/createComments', [commentsController::class, 'store'])->name('storeComment');
+
 
 Route::get('/viewPost', [viewPostController::class, 'showPost'])->name('viewPost');
 

@@ -3,12 +3,72 @@
 
   <main id="main">
 
-    <section class="single-post-content">
+    <section class="single-post-content ">
       <div class="container">
-        <div class="row">
-          <div class="col-md-9 post-content" data-aos="fade-up">
+          <div class="row">
+              <div class="col-md-9 post-content" data-aos="fade-up">
+                  @foreach ($posts as $post)
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-8 offset-md-2">
+                                  <div class="card">
+                                      <div class="card-body">
 
-            <!-- ======= Single Post Content ======= -->
+                                          {{-- <h5>Created by: {{ $post->user->name }}</h5> --}}
+
+                                          <h5>{{ $post->title }}</h5>
+                                          <p>{{ $post->body }}</p>
+                                          @if ($post->file)
+                                              <img src="{{ asset('storage/uploads/' . $post->file) }}" alt="Post Image" class="img-fluid">
+                                          @endif
+                                          <h5>Comments:</h5>
+                                          <div class="col-md-12">
+                                              @php
+                                                  $users = array();
+                                              @endphp
+                                              @foreach ($post->comments as $comment)
+                                                  @php
+                                                      $name = $comment->user->name ?? 'Unknown User';
+                                                      $user_comments = $users[$name] ?? array();
+                                                      array_push($user_comments, $comment->body);
+                                                      $users[$name] = $user_comments;
+                                                  @endphp
+                                              @endforeach
+                                              @foreach ($users as $name => $user_comments)
+                                                  <div class="card mb-2">
+                                                      <div class="card-body">
+                                                          <h6>Comments by: {{ $name }}</h6>
+                                                          @foreach ($user_comments as $comment_body)
+                                                              <p>{{ $comment_body }}</p>
+                                                          @endforeach
+                                                      </div>
+                                                  </div>
+                                              @endforeach
+                                          </div>
+                                          <div class="col-md-12">
+                                              <form action="{{ route('storeComment') }}" method="POST">
+                                                  @csrf
+                                                  <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                                  <div class="form-group">
+                                                      <textarea name="body" rows="4" cols="50" class="form-control" placeholder="Write a comment"></textarea>
+                                                  </div>
+                                                  <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                                              </form>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              </div>
+          </div>
+      </div>
+  </section>
+  
+
+
+            {{-- <!-- ======= Single Post Content ======= -->
             <div class="single-post">
               <div class="post-meta"><span class="date">Business</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
               <h1 class="mb-5">13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h1>
@@ -443,4 +503,4 @@
   </footer>
 
 </body>
-@endsection
+@endsection --}}

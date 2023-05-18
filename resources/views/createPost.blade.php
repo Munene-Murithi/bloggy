@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container mt-5">
+    <div class="container mt-5 col-6">
         <h1>Create Post</h1>
 
         @if (session('success'))
@@ -33,5 +33,6 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-    </div>
+    
+    
 @endsection
