@@ -1197,7 +1197,8 @@ section {
 --------------------------------------------------------------*/
 .footer {
   overflow: hidden;
-  background: rgba(var(--color-black-rgb), 0.9);
+  background: red;
+  background-color: grey;
   font-size: 16px;
   color: rgba(var(--color-white-rgb), 0.7);
 }

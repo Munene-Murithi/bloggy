@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class commentsController extends Controller
 {
+    public function showCreateComment(){
+        return view('createComment');
+    }
+    
     public function store(Request $request)
     {
         $request->validate([

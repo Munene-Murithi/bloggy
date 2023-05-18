@@ -31,7 +31,7 @@ class loginController extends Controller
             $request->session()->put('email', $user->email);
             Auth::login($user);
         
-            return redirect("viewPost");
+            return redirect("dashboard");
         } else {
             return redirect('login')->with('fail', 'Invalid details.');
         }

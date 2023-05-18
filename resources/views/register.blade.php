@@ -91,7 +91,8 @@
                             <div class="p-3">
                                 <div class="form-check">
                                     <input class="form-check-input @error('terms') is-invalid @enderror" type="checkbox"
-                                        name="terms" id="terms" {{ old('terms') ? 'checked' : '' }}>
+                                    name="terms" id="terms" {{ old('terms') ? 'checked' : '' }}>
+
 
                                     <label for="terms">
                                         I agree to the <a href="{{ route('terms') }}">terms and conditions</a>.
@@ -125,5 +126,15 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#terms').click(function () {
+            if ($(this).hasClass('is-invalid')) {
+                $(this).removeClass('is-invalid');
+            }
+        });
+    });
+</script>
 </body>
 @endsection

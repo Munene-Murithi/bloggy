@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron pt-5 mt-5">
     <div class="container">
         <h1 class="d-flex justify-content-center align-items-center">Welcome to Blog Site</h1>
 

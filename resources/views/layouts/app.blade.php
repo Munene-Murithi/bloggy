@@ -38,42 +38,25 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="./assets/img/logo.png" alt=""> 
+                <img src="./assets/img/logo.png" alt="">
                 <h1>Bloggy</h1>
             </a>
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    {{-- @auth
-                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Create Post here</h5>
-                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            <div class="user-profile">
-                                <div class="profile-photo">
-                                    <img src="{{ asset('path/to/profile-photo.jpg') }}" alt="Profile Photo">
-                                </div>
-                                <div class="profile-info">
-                                    <h3>{{ $user->name }}</h3>
-                                    <p>Phone: {{ $user->phone }}</p>
-                                    <p>Email: {{ $user->email }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endauth --}}
-                    <li><a href="viewPost">Blog</a></li>
-                    <li><a href="dashboard">Single Post</a></li>
-                  
-                    
+                    @auth
+                    <li><a href="dashboard">Dashboard</a></li>
+                    <li><a href="createPost">New Post</a></li>
+                    <li><a href="profile">Profile</a></li>
+                    @endauth
 
                     <div>
                         <!-- Move the div inside the ul element -->
                         @auth
+
+
                         <li class="dropdown">
                             <!-- Add the dropdown class to the li element -->
                             <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -93,12 +76,12 @@
                         @endauth
                         @guest
                         <ul>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">Signup</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">Signup</a>
+                            </li>
                         </ul>
                         @endguest
                     </div>
@@ -110,9 +93,9 @@
             </nav><!-- .navbar -->
 
             <div class="position-relative">
-                <a href="#" class="mx-2"><span class="bi-facebook"></span></a>
-                <a href="#" class="mx-2"><span class="bi-twitter"></span></a>
-                <a href="#" class="mx-2"><span class="bi-instagram"></span></a>
+                <a href="https://github.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2"><span class="bi-github"></span></a>
+                <a href="https://www.twitter.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2"> <span class="bi-twitter"></span></a>
+                <a href="https://www.instagram.com/_sam.iy_" target="_blank" rel="noopener noreferrer" class="mx-2"><span class="bi-instagram"></span></a>
 
                 <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -151,5 +134,3 @@
     <!-- Template Main JS File -->
     <script src="./assets/js/main.js"></script>
 </body>
-
-</html>

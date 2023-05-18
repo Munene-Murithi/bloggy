@@ -7,7 +7,7 @@
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header text-center text-success"> <!-- Added 'text-center' class -->
+                    <div class="card-header text-center text-success">
                         <h4>Login</h4>
                     </div>
                     <div class="card-body">
@@ -18,24 +18,24 @@
                                     {{ session('fail') }}
                                 </div>
                             @endif
-                            <div class="form-group">
-                                <label for="email">Email address</label>
+                            <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="email" name="email" required>
+                                <label for="email">Email address</label>
                             </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
+                            <div class="form-floating mb-3">
                                 <input type="password" class="form-control" id="password" name="password" required>
+                                <label for="password">Password</label>
                             </div>
-                            <div class="form-group form-check mt-3"> <!-- Added 'text-center' class -->
+                            <div class="form-check mb-3">
                                 <input type="checkbox" class="form-check-input" id="remember" name="remember">
                                 <label class="form-check-label" for="remember">Remember me</label>
                             </div>
-                            <div class="d-grid gap-2  pt-3">
-                                <button type="submit" class="btn btn-outline-success mx-auto">Login</button> <!-- Added 'mx-auto' class -->
+                            <div class="d-grid gap-2 pt-3">
+                                <button type="submit" class="btn btn-outline-success mx-auto">Login</button>
                             </div>
                             <div class="card-footer mt-3 text-center">
                                 Don't have an account? Register <a href="{{ route('register') }}">here</a>
-                              </div>
+                            </div>
                         </form>
                     </div>
                 </div>
