@@ -29,4 +29,18 @@ class commentsController extends Controller
     
         return redirect()->back()->with('success', 'Comment added successfully.');
     }
+    public function destroy(Comment $comment)
+    {
+        // Check if the authenticated user is the owner of the comment
+        if (auth()->user()->id !== $comment->user_id) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Delete the comment
+        $comment->delete();
+
+        // Redirect or return a response as desired
+        return redirect()->back()->with('success', 'Comment deleted successfully.');
+
+    }
 }

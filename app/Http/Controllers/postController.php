@@ -9,15 +9,15 @@ use App\Models\Post;
 use App\Models\User;
 
 
-class createPostController extends Controller
+class postController extends Controller
 {
     public function showCreatePost()
     {
         return view('createPost');
     }
 
-    public function store(Request $request)
-{
+    public function store(Request $request){
+
     $request->validate([
         'title' => 'required',
         'body' => 'required',
@@ -39,8 +39,26 @@ class createPostController extends Controller
     }
 
     $post->save();
+    $posts = Post::latest()->get();
 
-    return redirect()->route('dashboard')->with('success', 'Post created successfully.');
-}
+    return view('dashboard', ['posts' => $posts])->with('success', 'Post created successfully.');
 
+    // return redirect()->route('dashboard')->with('success', 'Post created successfully.');
+    }
+    public function destroy(Post $post)
+    {
+        // Check if the authenticated user is the owner of the post
+        if (auth()->user()->id !== $post->user_id) {
+            abort(403, 'Unauthorized');
+        }
+
+        // Delete the post
+        $post->delete();
+
+        // Redirect or return a response as desired
+    
+        return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
+    }
+    
+    
 }
