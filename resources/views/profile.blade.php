@@ -2,55 +2,77 @@
 
 @section("content")
 <div class="container mt-5 pt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow">
-        <div class="card-body text-center">
-          <div class="card-header">
-            <h3 class="card-title mb-4">Profile</h3>
-          </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">Profile</h3>
+                    </div>
 
-          <!-- Profile Photo -->
-          <div class="mb-4">
-            <img src="./assets/img/person-6.jpg" alt="" class="rounded-circle profile-photo">
-          </div>
+                    <!-- Profile Photo -->
+                    <div class="mb-4 mt-2">
+                        <div class="text-center">
+                            @if(Auth::user()->profile_photo)
+                            <img src="{{ asset('storage/uploads/' . Auth::user()->profile_photo) }}" alt="Profile Photo"
+                                class="rounded-circle profile-photo " style="height: 200px; width: 200px;">
+                            @else
+                            <img src="{{ asset('storage/profile_photos/photo.jpg') }}" alt="Default Profile Photo"
+                                class="rounded-circle profile-photo img-thumbnail mt-3 mb-3"
+                                style="height: 200px; width: 200px;">
+                            @endif
+                        </div>
+                    </div>
 
-          <!-- Profile Details -->
-          <div class="mb-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" id="name" class="form-control" value="John Doe" placeholder="holser" readonly>
-          </div>
+                    <form action="{{ route('profile') }}" method="POST" enctype="multipart/form-data" class="mb-3">
+                        @csrf
+                        <div class="my-auto">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <label for="profile-photo" class="form-label">Choose Profile Photo:</label>
+                                    <input type="file" id="profile-photo" name="profile_photo" class="form-control"
+                                        required>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="submit" class="btn btn-primary mt-4">Upload</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="d-flex align-items-center">
+                        <hr class="flex-grow-1">
+                        <span class="mx-2">
+                            <h4>User Details</h4>
+                        </span>
+                        <hr class="flex-grow-1">
+                    </div>
 
-          <div class="mb-3">
-            <label for="phone" class="form-label">Phone:</label>
-            <input type="text" id="phone" class="form-control" value="123-456-7890" readonly>
-          </div>
+                    <!-- Profile Details -->
 
-          <div class="mb-3">
-            <label for="email" class="form-label">Email:</label>
-            <input type="email" id="email" class="form-control" value="john@example.com" readonly>
-          </div>
+                    <div class="card p-3 col-8 mx-auto mb-3">
+                      <div class="card-body">
+                        <div class="mb-3">
+                            <strong>Name:</strong> {{ Auth::user()->name }}
+                        </div>
 
-          <div class="mb-3">
-            <label for="last-login" class="form-label">Last Login:</label>
-            <input type="text" id="last-login" class="form-control" value="2023-05-18 10:30 AM" readonly>
-          </div>
+                        <div class="mb-3">
+                            <strong>Phone:</strong> {{ Auth::user()->phone }}
+                        </div>
 
-          <!-- Profile Photo Upload -->
-          <div class="mb-3">
-            <label for="profile-photo" class="form-label">Change Profile Photo:</label>
-            <input type="file" id="profile-photo" class="form-control">
-          </div>
+                        <div class="mb-3">
+                            <strong>Email:</strong> {{ Auth::user()->email }}
+                        </div>
 
-          <!-- Profile Photo Change Button -->
-          <button type="button" class="btn btn-primary">Upload</button>
-
+                        <div class="mb-3">
+                            <strong>Last Login:</strong> {{ Auth::user()->last_login }}
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/js/bootstrap.bundle.min.js"></script>
 @endsection
-

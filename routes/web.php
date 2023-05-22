@@ -12,10 +12,14 @@
     use App\Http\Controllers\commentsController;
     use App\Http\Controllers\profileController;
     use App\Http\Controllers\AuthController;
+    use App\Http\Controllers\showPostController;
+    use App\Http\Controllers\tempController;
 
     Route::middleware(['guest'])->group(function () {
         Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
         Route::post('/register', [registerController::class, 'store']);
+
+
 
         Route::get('/login', [loginController::class, 'showLogin'])->name('login');
         Route::post('/login', [loginController::class, 'authenticate']);
@@ -27,7 +31,10 @@
     Route::middleware(['auth'])->group(function () {
         Route::get('/createPost', [postController::class, 'showCreatePost'])->name('createPost');
         Route::post('/storePost', [postController::class, 'store'])->name('storePost');
-        Route::resource('posts', PostController::class);
+        Route::get('/singlePost/{id}', [postController::class, 'show'])->name('singlePost');
+        Route::get('/post/{id}', [postController::class, 'showSinglePost']);
+
+        Route::resource('posts', postController::class);
 
 
         Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
@@ -42,6 +49,8 @@
 
 
         Route::get('/profile', [profileController::class, 'showProfile'])->name('profile');
+        Route::post('/profile', [profileController::class, 'updatePhoto']);
+
     });
 
     Route::get('/', [App\Http\Controllers\homeController::class, 'showHomePage'])->name('home');

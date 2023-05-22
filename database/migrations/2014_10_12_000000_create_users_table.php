@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 30);
             $table->string('email', 50)->unique();
             $table->string('phone')->default(''); // Set a default value for the "phone" field
+            $table->string('profile_photo', 255)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

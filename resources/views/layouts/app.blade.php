@@ -31,6 +31,16 @@
 
 
     <title>{{ config('app.name') }}</title>
+
+    <style>
+        .pagination {
+            font-size: 14px; /* Adjust the font size to make it smaller */
+        }
+
+        .pagination .page-link {
+            padding: 0.25rem 0.5rem; /* Adjust the padding to reduce the size of each link */
+        }
+    </style>
 </head>
 
 <body>
@@ -71,6 +81,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+
                             </ul>
                         </li>
                         @endauth

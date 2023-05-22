@@ -11,14 +11,12 @@ class dashboardController extends Controller
 {
     public function showDashboard()
     {
-        $posts = Post::with('comments')->get();
-        
-
+        $posts = Post::with(['user', 'comments'])
+                     ->orderBy('created_at', 'desc')
+                     ->paginate(5);
+    
         return view('dashboard', compact('posts'));
-        
-        $posts = Post::with('user')->get();
-
-        return view('dashboard', compact('posts'));
-
     }
+    
+    
 }

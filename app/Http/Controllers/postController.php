@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
+
 use App\Models\Post;
 use App\Models\User;
 
@@ -39,7 +42,7 @@ class postController extends Controller
     }
 
     $post->save();
-    $posts = Post::latest()->get();
+    $posts = Post::latest()->paginate(10); // Fetch 10 posts per page
 
     return view('dashboard', ['posts' => $posts])->with('success', 'Post created successfully.');
 
@@ -52,13 +55,22 @@ class postController extends Controller
             abort(403, 'Unauthorized');
         }
 
-        // Delete the post
         $post->delete();
-
-        // Redirect or return a response as desired
     
         return redirect()->route('dashboard')->with('success', 'Post deleted successfully.');
     }
-    
+    public function showSinglePost(){
+
+        return view('singlePost');
+    }
+
+public function show($id)
+{
+    $post = Post::findOrFail($id);
+
+    $comments = $post->comments()->paginate(5); // Fetch 10 comments per page
+
+    return view('singlePost', ['post' => $post, 'comments' => $comments]);
+}
     
 }
