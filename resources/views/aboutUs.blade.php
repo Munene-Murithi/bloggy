@@ -74,7 +74,7 @@
                             fugit corrupti error iste laboriosam dolorum culpa doloremque eligendi repellat iusto vel
                             impedit odit cum. Sequi atque molestias nesciunt rem eum pariatur quibusdam deleniti saepe
                             eius maiores porro quam, praesentium ipsa deserunt laboriosam adipisci. Optio, animi!</p>
-                        <p><a href="#" class="more">View All Blog Posts</a></p>
+                        <p><a href="dashboard" class="more">View All Blog Posts</a></p>
                     </div>
                     <div class="col-lg-6">
                         <div class="row">
@@ -130,33 +130,7 @@
                             provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis
                             sunt ullam temporibus aut!</p>
                     </div>
-                    <div class="col-lg-4 text-center mb-5">
-                        <img src="./assets/img/person-4.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-                        <h4>Cameron Williamson</h4>
-                        <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat
-                            maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque
-                            provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis
-                            sunt ullam temporibus aut!</p>
-                    </div>
-                    <div class="col-lg-4 text-center mb-5">
-                        <img src="./assets/img/person-5.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-                        <h4>Cameron Williamson</h4>
-                        <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat
-                            maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque
-                            provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis
-                            sunt ullam temporibus aut!</p>
-                    </div>
-                    <div class="col-lg-4 text-center mb-5">
-                        <img src="./assets/img/person-6.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
-                        <h4>Cameron Williamson</h4>
-                        <span class="d-block mb-3 text-uppercase">Editor Staff</span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis, perspiciatis repellat
-                            maxime, adipisci non ipsam at itaque rerum vitae, necessitatibus nulla animi expedita cumque
-                            provident inventore? Voluptatum in tempora earum deleniti, culpa odit veniam, ea reiciendis
-                            sunt ullam temporibus aut!</p>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -175,17 +149,17 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam ab, perspiciatis beatae autem
                             deleniti voluptate nulla a dolores, exercitationem eveniet libero laudantium recusandae
                             officiis qui aliquid blanditiis omnis quae. Explicabo?</p>
-                        <p><a href="about.html" class="footer-link-more">Learn More</a></p>
+                        <p><a href="aboutUs" class="footer-link-more">Learn More</a></p>
                     </div>
                     <div class="col-6 col-lg-2">
                         <h3 class="footer-heading">Navigation</h3>
                         <ul class="footer-links list-unstyled">
-                            <li><a href="index.html"><i class="bi bi-chevron-right"></i> Home</a></li>
-                            <li><a href="index.html"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                            <li><a href="home"><i class="bi bi-chevron-right"></i> Home</a></li>
+                            <li><a href="dashboard"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                            <li><a href="profile"><i class="bi bi-chevron-right"></i> Profile</a></li>
                             <li><a href="category.html"><i class="bi bi-chevron-right"></i> Categories</a></li>
-                            <li><a href="single-post.html"><i class="bi bi-chevron-right"></i> Single Post</a></li>
-                            <li><a href="about.html"><i class="bi bi-chevron-right"></i> About us</a></li>
-                            <li><a href="contact.html"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                            <li><a href="aboutUs"><i class="bi bi-chevron-right"></i> About us</a></li>
+                            <li><a href="contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-lg-2">

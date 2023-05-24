@@ -29,11 +29,10 @@
 
     // Routes accessible only to authenticated users
     Route::middleware(['auth'])->group(function () {
-        Route::get('/createPost', [postController::class, 'showCreatePost'])->name('createPost');
         Route::post('/storePost', [postController::class, 'store'])->name('storePost');
         Route::get('/singlePost/{id}', [postController::class, 'show'])->name('singlePost');
         Route::get('/post/{id}', [postController::class, 'showSinglePost']);
-
+        Route::get('/createPost', [postController::class, 'showCreatePost'])->name('createPost');
         Route::resource('posts', postController::class);
 
 

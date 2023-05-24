@@ -3,6 +3,7 @@
 namespace App\Models;
 use App\Models\Comment;
 use App\Models\User;
+use App\Models\Tag;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,5 +27,13 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
+    public static function getLatestPosts()
+    {
+        return self::latest()->take(10)->get();
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'tags');
+    }
 }

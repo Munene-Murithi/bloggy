@@ -23,7 +23,7 @@
     <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="./assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="./assets/vendor/aos/aoss.css" rel="stylesheet">
 
     <!-- Template Main CSS Files -->
     <link href="./assets/css/variables.css" rel="stylesheet">
@@ -113,7 +113,7 @@
 
                 <!-- ======= Search Form ======= -->
                 <div class="search-form-wrap js-search-form-wrap">
-                    <form action="search-result.html" class="search-form">
+                    <form action="#" class="search-form">
                         <span class="icon bi-search"></span>
                         <input type="text" placeholder="Search" class="form-control">
                         <button class="btn js-search-close"><span class="bi-x"></span></button>
@@ -127,7 +127,7 @@
     </header>
 
     @yield('content')
-
+    
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
