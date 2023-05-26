@@ -18,23 +18,26 @@ class loginController extends Controller
 
     }
 
-    public function authenticate(Request $request): RedirectResponse
-    {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
+    public function authenticate(Request $request): RedirectResponse{
+    $credentials = $request->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required']
+    ]);
+
+    $user = User::where('email', '=', $credentials['email'])->first();
+
+    if ($user && Hash::check($credentials['password'], $user->password)) {
+        $request->session()->put('email', $user->email);
+        Auth::login($user);
+
+        return redirect("dashboard");
+    } else {
+        return redirect('login')->withInput($request->only('email'))->withErrors([
+            'email' => 'Invalid email or password.',
         ]);
+    }
 
-        $user = User::where('email', '=', $credentials['email'])->first();
 
-        if ($user && Hash::check($credentials['password'], $user->password)) {
-            $request->session()->put('email', $user->email);
-            Auth::login($user);
-        
-            return redirect("dashboard");
-        } else {
-            return redirect('login')->with('fail', 'Invalid details.');
-        }
 
  
         // if (Auth::attempt($credentials)) {

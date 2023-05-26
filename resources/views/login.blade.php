@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <body class="pt-5">
     <div class="container">
         <div class="row justify-content-center mt-5">
@@ -13,9 +12,11 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
-                            @if(session('fail'))
+                            @if ($errors->any())
                                 <div class="alert alert-danger">
-                                    {{ session('fail') }}
+                                    @foreach ($errors->all() as $error)
+                                        <p>{{ $error }}</p>
+                                    @endforeach
                                 </div>
                             @endif
                             <div class="form-floating mb-3">
