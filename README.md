@@ -1,20 +1,10 @@
-
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="screenshots/Screenshot (3).png" alt=""></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (4).png" alt=""></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (5).png" alt=""></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (6).png" alt=""></a>
-</p>
-
+# Larablog app
  
-# Blog Project
-
-This repository contains the code for my personal blog project. The project is developed using HTML, CSS, and JavaScript.
+This repository contains the code for my personal blog project. The project is developed using HTML, Bootstrap CSS, PHP's Laravel, Blade and JavaScript.
 
 ## Description
 
-The blog project aims to provide a platform for me to share my thoughts, ideas, and experiences with others. It features a user-friendly interface and allows visitors to read, comment, and share blog posts. The project utilizes Webdock for fast VPS hosting.
+The blog project aims to provide a platform for users to share my thoughts, ideas, and experiences with others. It features a user-friendly interface and allows visitors to read, comment, and share blog posts.
 
 ## Features
 
@@ -26,8 +16,12 @@ The blog project aims to provide a platform for me to share my thoughts, ideas, 
 
 ## Screenshots
 
-Insert screenshots of the project's user interface here.
-
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="screenshots/Screenshot (3).png" alt=""></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (4).png" alt=""></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (5).png" alt=""></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (6).png" alt=""></a>
+</p>
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/your-username/blog-project.git`
@@ -36,8 +30,8 @@ Insert screenshots of the project's user interface here.
 
 ## Usage
 
-1. Start the local development server: `npm start`
-2. Open your web browser and visit `http://localhost:3000`
+1. Start the local development server: `php artisan serve`
+2. Open your web browser and visit `http://localhost:8000`
 
 ## Configuration
 
@@ -45,6 +39,7 @@ Before running the project, make sure to update the following configuration para
 
 - Database connection: Update the database connection details in the `config.js` file.
 - Social media integration: Add your social media API keys in the `config.js` file.
+- Have composer installed
 
 ## Contributing
 
@@ -55,6 +50,7 @@ Contributions to the project are welcome. If you find any bugs or have suggestio
 This project is made possible with the help of the following resources:
 
 - kevin@bitwise solutions
+- Colleagues: Mary Okaka,  `https://github.com/atienocodes`
 
 ## License
 
@@ -66,17 +62,6 @@ The project is licensed under the [MIT License](LICENSE).
 - **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
 - **[Lendio](https://lendio.com)**
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
