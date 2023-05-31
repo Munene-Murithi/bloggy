@@ -7,47 +7,42 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 use Session;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
-    //
-        public function showLogin(){
+    public function showLogin()
+    {
         // show register page
         return view('login');
-
     }
 
-    public function authenticate(Request $request): RedirectResponse{
-    $credentials = $request->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required']
-    ]);
-
-    $user = User::where('email', '=', $credentials['email'])->first();
-
-    if ($user && Hash::check($credentials['password'], $user->password)) {
-        $request->session()->put('email', $user->email);
-        Auth::login($user);
-
-        return redirect("dashboard");
-    } else {
-        return redirect('login')->withInput($request->only('email'))->withErrors([
-            'email' => 'Invalid email or password.',
+    public function authenticate(Request $request): RedirectResponse
+    {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
         ]);
-    }
 
+        $user = User::where('email', '=', $credentials['email'])->first();
 
+        if ($user && Hash::check($credentials['password'], $user->password)) {
+            $request->session()->put('email', $user->email);
+            Auth::login($user);
 
- 
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
- 
-        //     return redirect('/home');
-        // }
- 
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
+            // Log successful login to Slack
+            Log::channel('slack')->info("Successful login: $user->email");
+
+            return redirect("dashboard");
+        } else {
+            // Log failed login to Slack
+            Log::channel('slack')->warning("Failed login attempt: $credentials[email]");
+
+            return redirect('login')->withInput($request->only('email'))->withErrors([
+                'email' => 'Invalid email or password.',
+            ]);
+        }
     }
 }

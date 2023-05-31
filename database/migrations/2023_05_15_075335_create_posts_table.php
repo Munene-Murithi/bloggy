@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('title', 100);
             $table->string('body', 255);
-            $table->string('file', 255);
+            $table->string('file', 255)->nullable();
             $table->timestamps();
         });
     }

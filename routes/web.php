@@ -34,6 +34,9 @@
         Route::get('/post/{id}', [postController::class, 'showSinglePost']);
         Route::get('/createPost', [postController::class, 'showCreatePost'])->name('createPost');
         Route::resource('posts', postController::class);
+        Route::get('/posts/{post}/edit', [postController::class, 'edit'])->name('posts.edit');
+        Route::put('/posts/{post}', [postController::class, 'update'])->name('posts.update');
+        
 
 
         Route::get('/logout', [logoutController::class, 'logout'])->name('logout');
@@ -45,6 +48,9 @@
         Route::get('/createComment', [commentsController::class, 'showCreateComment'])->name('CreateComment');
         Route::post('/createComments', [commentsController::class, 'store'])->name('storeComment');
         Route::delete('/comments/{comment}', [commentsController::class, 'destroy'])->name('comments.destroy');
+        Route::get('/comments/{comment}/edit', [commentsController::class, 'edit'])->name('comments.edit');
+        Route::put('/comments/{comment}', [commentsController::class, 'update'])->name('comments.update');
+
 
 
         Route::get('/profile', [profileController::class, 'showProfile'])->name('profile');

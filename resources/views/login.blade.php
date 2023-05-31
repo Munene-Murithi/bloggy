@@ -35,7 +35,7 @@
                                 <button type="submit" class="btn btn-outline-success mx-auto">Login</button>
                             </div>
                             <div class="card-footer mt-3 text-center">
-                                Don't have an account? Register <a href="{{ route('register') }}">here</a>
+                                Don't have an account? Register <a href="{{ route('register') }}" class="text-decoration-underline fw-bol text-success">here.</a>
                             </div>
                         </form>
                     </div>

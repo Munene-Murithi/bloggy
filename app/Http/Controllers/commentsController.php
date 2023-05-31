@@ -43,4 +43,34 @@ class commentsController extends Controller
         return redirect()->back()->with('success', 'Comment deleted successfully.');
 
     }
+    public function edit(Comment $comment)
+    {
+        // Check if the authenticated user is the owner of the comment
+        if (auth()->user()->id !== $comment->user_id) {
+            abort(403, 'Unauthorized');
+        }
+
+        return view('editComment', compact('comment'));
+    }
+
+    public function update(Request $request, Comment $comment)
+{
+    // Check if the authenticated user is the owner of the comment
+    if (auth()->user()->id !== $comment->user_id) {
+        abort(403, 'Unauthorized');
+    }
+
+    $request->validate([
+        'body' => 'required',
+    ]);
+
+    $comment->body = ucfirst($request->body);
+    $comment->save();
+
+    $postId = $comment->post->id; // Get the ID of the related post
+
+    return redirect()->route('singlePost', $postId)->with('success', 'Comment updated successfully.');
+}
+
+
 }

@@ -35,9 +35,9 @@ class RegisterController extends Controller
 
         $user->save();
 
-        Auth::login($user);
+        // Auth::login($user);
 
-        return redirect('dashboard');
+        return redirect('login');
     }
     
 }

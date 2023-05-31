@@ -88,7 +88,7 @@ class postController extends Controller
     //     $post->tags()->attach($request->tags);
     // }
 
-    $posts = Post::latest()->paginate(10); // Fetch 10 posts per page
+    $posts = Post::latest()->paginate(2); // Fetch 10 posts per page
 
     
 
@@ -131,5 +131,77 @@ public function show($id)
 
     return view('singlePost', ['post' => $post, 'comments' => $comments]);
 }
-    
+public function edit(Post $post)
+{
+    // Check if the authenticated user is the owner of the post
+    if (auth()->user()->id !== $post->user_id) {
+        abort(403, 'Unauthorized');
+    }
+
+    return view('editPost', compact('post'));
+}
+
+public function update(Request $request, Post $post)
+{
+    // Check if the authenticated user is the owner of the post
+    if (auth()->user()->id !== $post->user_id) {
+        abort(403, 'Unauthorized');
+    }
+
+    try {
+        $validator = Validator::make($request->all(), [
+            'title' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $harmfulWords = HarmfulWord::pluck('word')->toArray();
+
+                    foreach ($harmfulWords as $word) {
+                        if (Str::contains($value, $word)) {
+                            $fail('Please use proper language in your title.');
+                            break;
+                        }
+                    }
+                },
+            ],
+            'body' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    $harmfulWords = HarmfulWord::pluck('word')->toArray();
+
+                    foreach ($harmfulWords as $word) {
+                        if (Str::contains($value, $word)) {
+                            $fail('Please use proper language in your body.');
+                            break;
+                        }
+                    }
+                },
+            ],
+            'file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            throw new ValidationException($validator);
+        }
+
+        $post->title = ucfirst($request->title);
+        $post->body = ucfirst($request->body);
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('uploads', $filename, 'public');
+            $post->file = $filename;
+        }
+
+        $post->save();
+
+        return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
+    } catch (ValidationException $exception) {
+        $message = 'Post could not be updated: ' . $exception->getMessage();
+
+        // Redirect back with the errors
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+}
+
 }

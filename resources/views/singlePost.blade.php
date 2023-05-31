@@ -20,7 +20,7 @@
                 alt="Profile Photo" class="rounded-circle profile-photo"
                 style="height: 40px; width: 40px;">
             @else
-            <img src="{{ asset('storage/profile_photos/photo.jpg') }}"
+            <img src="{{ asset('storage/uploads/photo.jpg') }}"
                 alt="Default Profile Photo"
                 class="rounded-circle profile-photo img-thumbnail mt-3 mb-3"
                 style="height: 40px; width: 40px;">
@@ -39,10 +39,23 @@
         <form action="{{ route('posts.destroy', $post) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger mt-2 toggle-comments mb-2">Delete</button>
+            <button type="submit" class="btn btn-danger m-2">Delete</button>
+           
+             <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success m-2 toggle-comments">Edit</a>
+
         </form>
         @endif
-
+        <div class="col-md-12">
+            <form action="{{ route('storeComment') }}" method="POST">
+                @csrf
+                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                <div class="form-group">
+                    <textarea name="body" rows="2" cols="50" class="form-control mt-2"
+                        placeholder="Write a comment"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-2">Submit</button>
+            </form>
+        </div>
         <div class="col-md-12">
             <div class="comments-container mt-2 mb-2">
                 @foreach ($post->comments as $comment)
@@ -55,7 +68,7 @@
                                     alt="Profile Photo" class="rounded-circle profile-photo"
                                     style="height: 40px; width: 40px;">
                                 @else
-                                <img src="{{ asset('default-profile-photo.png') }}"
+                                <img src="{{ asset('storage/uploads/photo.jpg') }}"
                                     alt="Default Profile Photo"
                                     class="rounded-circle profile-photo"
                                     style="height: 40px; width: 40px;">
@@ -67,11 +80,14 @@
                             <div class="comment">{{ $comment->body }}</div>
                             <div class="time">{{ $comment->created_at->diffForHumans() }}</div>
                             @if (Auth::check() && Auth::user()->id === $comment->user_id)
+                            <a href="{{ route('comments.edit', $comment) }}" class="btn btn-success">Edit</a>
+
                             <form action="{{ route('comments.destroy', $comment) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger float-right">Delete</button>
                             </form>
+
                             @endif
                         </div>
                     </div>
@@ -80,9 +96,11 @@
             </div>
             <button class="btn btn-primary mt-2 toggle-comments mb-2">Toggle
                 {{ $post->comments->count() }} Comments</button>
+                
         </div>
     </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {

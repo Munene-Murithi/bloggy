@@ -36,9 +36,11 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger mt-2 toggle-comments mb-2">Delete</button>
+                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-success mt-2 toggle-comments mb-2">Edit</a>
+
                             </form>
                             @endif
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
                                 @php
                                 $users = array();
                                 @endphp
@@ -91,8 +93,8 @@
                                 <button class="btn btn-primary mt-2 toggle-comments mb-2">Toggle
                                     {{ $post->comments->count() }} Comments</button>
                                 @endif
-                            </div>
-                            <div class="col-md-12">
+                            </div> --}}
+                            {{-- <div class="col-md-12">
                                 <form action="{{ route('storeComment') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="post_id" value="{{ $post->id }}">
@@ -102,7 +104,10 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary mt-2">Submit</button>
                                 </form>
-                            </div>
+                            </div> --}}
+                            {{-- <a href="{{ route('singlePost', $post->id) }}"><button class="btn btn-primary mt-2 mb-2">Toggle
+                                {{ $post->comments->count() }} Comments</button></a> --}}
+                                <div class="text-secondary" @disabled(true)>click post to view and make comments</div>
                         </div>
                     </div>
                     @endforeach
@@ -112,7 +117,7 @@
     </section>
   
 
-    <div class="pagination m-5 justify-content-center mx-auto">
+    <div class="mx-auto justify-content-center col-3" >
         {{ $posts->links('pagination::bootstrap-5') }}
     </div>
 </main>

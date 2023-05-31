@@ -97,7 +97,7 @@
 
 
                                     <label for="terms">
-                                        I agree to the <a href="{{ route('terms') }}">terms and conditions</a>.
+                                        I agree to the <a href="{{ route('terms') }}" class="text-decoration-underline fw-bol text-success">terms and conditions</a>.
                                     </label>
 
                                     @error('terms')
@@ -119,9 +119,9 @@
                         </div>
                         
                         </div >
-                        <div class="card-footer mt-4 text-center">
-                            Do you already have an account? Login <a href="{{ route('login') }}">here</a>
-                          </div>
+                        <section class="card-footer mt-4 text-center">
+                            Do you already have an account? Login <a href="{{ route('login') }}" class="text-decoration-underline fw-bol text-success">here.</a>
+                        </section>
                     </form>
                 </div>
             </div>

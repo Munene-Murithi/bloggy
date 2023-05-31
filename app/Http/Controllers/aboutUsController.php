@@ -9,7 +9,6 @@ use App\Models\Post;
 class aboutUsController extends Controller
 {
     public function showAbout(){
-        return('hello world');
-        // return view ('aboutUs');
+        return view ('aboutUs');
     }
 }

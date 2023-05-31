@@ -17,7 +17,7 @@
                             <img src="{{ asset('storage/uploads/' . Auth::user()->profile_photo) }}" alt="Profile Photo"
                                 class="rounded-circle profile-photo " style="height: 200px; width: 200px;">
                             @else
-                            <img src="{{ asset('storage/profile_photos/photo.jpg') }}" alt="Default Profile Photo"
+                            <img src="{{ asset('storage/uploads/photo.jpg') }}" alt="Default Profile Photo"
                                 class="rounded-circle profile-photo img-thumbnail mt-3 mb-3"
                                 style="height: 200px; width: 200px;">
                             @endif

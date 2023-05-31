@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-5 col-6">
-        <h1>Create Post</h1>
+        <h1 class='mt-5 pt-5'>Create Post</h1>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -52,20 +52,36 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
             </div>
-
             <div class="mb-3">
-
                 <label for="file" class="form-label fw-bold">File</label>
-                <img src="" alt="" class="img-product" />
-
-                <input type="file" class="form-control" id="file" name="file">
+                <img src="" alt="" class="img-product m-3" id="preview-img" style="max-width: 500px; max-height: 500px;">
+                <input type="file" class="form-control" id="file" name="file" onchange="previewFile(event)">
                 @error('file')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
+            
+            
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+      
     
-    
+        <script>
+            function previewFile(event) {
+                var previewImg = document.getElementById('preview-img');
+                var file = event.target.files[0];
+                var reader = new FileReader();
+        
+                reader.onloadend = function() {
+                    previewImg.src = reader.result;
+                }
+        
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    previewImg.src = "";
+                }
+            }
+        </script>
 @endsection
