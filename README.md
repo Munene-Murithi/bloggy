@@ -20,7 +20,7 @@ The blog project aims to provide a platform for users to share my thoughts, idea
 <a href="https://github.com/laravel/framework/actions"><img src="screenshots/Screenshot (3).png" alt=""></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (4).png" alt=""></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (5).png" alt=""></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (6).png" alt=""></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="screenshots/Screenshot (7).png" alt=""></a>
 </p>
 ## Installation
 
