@@ -14,12 +14,27 @@
     use App\Http\Controllers\AuthController;
     use App\Http\Controllers\showPostController;
     use App\Http\Controllers\tempController;
+    use App\Http\Controllers\ForgotPasswordController;
 
     Route::middleware(['guest'])->group(function () {
         Route::get('/register', [registerController::class, 'showRegisterPage'])->name('register');
         Route::post('/register', [registerController::class, 'store']);
 
-
+        Route::get('/current-time', function () {
+            $timezone = config('app.timezone');
+            $currentTime = date('Y-m-d H:i:s');
+            return "Current Time ({$timezone}): {$currentTime}";
+        });
+        Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])
+        ->name('password.request');
+    Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+        ->name('password.email');
+    Route::get('password/reset/{token}', [ForgotPasswordController::class, 'showResetForm'])
+        ->name('password.reset');
+    Route::post('password/reset', [ForgotPasswordController::class, 'resetPassword'])
+        ->name('password.update');
+    
+        
 
         Route::get('/login', [loginController::class, 'showLogin'])->name('login');
         Route::post('/login', [loginController::class, 'authenticate']);

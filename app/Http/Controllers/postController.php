@@ -9,6 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\HarmfulWord;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Models\User;
@@ -82,6 +83,8 @@ class postController extends Controller
     }
 
     $post->save();
+    Log::info('New post created', ['post_id' => $post->id, 'title' => $post->title]);
+
 
     // if ($request->has('tags')) {
     //     $post = new Post;
@@ -194,6 +197,8 @@ public function update(Request $request, Post $post)
         }
 
         $post->save();
+        Log::info('Post edited', ['post_id' => $post->id, 'title' => $post->title]);
+
 
         return redirect()->route('dashboard')->with('success', 'Post updated successfully.');
     } catch (ValidationException $exception) {

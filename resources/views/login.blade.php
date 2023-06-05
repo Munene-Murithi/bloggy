@@ -20,8 +20,17 @@
                                 </div>
                             @endif
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" autocomplete="email">
+                                
                                 <label for="email">Email address</label>
+
+                                @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" id="password" name="password" required>
@@ -37,7 +46,12 @@
                             <div class="card-footer mt-3 text-center">
                                 Don't have an account? Register <a href="{{ route('register') }}" class="text-decoration-underline fw-bol text-success">here.</a>
                             </div>
+
                         </form>
+                        <div class="text-center">
+                            <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
