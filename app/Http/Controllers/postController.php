@@ -95,7 +95,7 @@ class postController extends Controller
 
     
 
-    return view('dashboard', ['posts' => $posts])->with('success', 'Post created successfully.');
+    return redirect()->route('dashboard')->with('success', 'Post created successfully.');
         
 
     
@@ -116,6 +116,7 @@ class postController extends Controller
         if (auth()->user()->id !== $post->user_id) {
             abort(403, 'Unauthorized');
         }
+        $post->comments()->delete();
 
         $post->delete();
     

@@ -65,6 +65,7 @@
 
                         <div class="mb-3">
                             <strong>Last Login:</strong> {{ Auth::user()->last_login }}
+                            <p class="text-secondary"  @disabled(true) >contact admin for detail changes</p>
                         </div>
                       </div>
                     </div>
@@ -73,6 +74,6 @@
         </div>
     </div>
 </div>
-
+@yield('profile')
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/js/bootstrap.bundle.min.js"></script>
 @endsection

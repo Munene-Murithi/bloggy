@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+@extends("layouts.app")
+@section("content")
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,9 +26,9 @@
     <title>{{ config('app.name') }}</title>
 </head>
 
-<body class="rounded-3 m-3 p-3">
+<body class="rounded-3 m-4 p-5">
     <div class="border">
-        <nav id="navbar" class="navbar">
+        {{-- <nav id="navbar" class="navbar">
             <ul>
                 @auth
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
@@ -72,7 +70,7 @@
                 <li><a href="{{ route('aboutUs') }}">About Us</a></li>
                 <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
-        </nav>
+        </nav> --}}
     </div>
 
     <div class="container mt-5 col-6 rounded-3">
@@ -130,4 +128,4 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
-</html>
+@endsection

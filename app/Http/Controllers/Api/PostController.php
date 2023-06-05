@@ -96,7 +96,7 @@ public function edit($id){
 
 public function update(Request $request, int $id){
     $validator = Validator::make($request->all(), [
-        'title' => 'required|max:20',
+        'title' => 'required|max:50',
         'body' => 'required|max:255',
         'file' => 'nullable|mimes:jpg,jpeg,png,pdf|max:2048'
     ]);
@@ -126,6 +126,24 @@ public function update(Request $request, int $id){
                 'message' => 'something went wrong'
             ], 500);
         }
+    }
+}
+public function destroy($id)
+{
+    $post = Post::find($id);
+    
+    if ($post) {
+        $post->delete();
+        
+        return response()->json([
+            'status' => 200,
+            'message' => 'Post deleted successfully'
+        ], 200);
+    } else {
+        return response()->json([
+            'status' => 404,
+            'message' => 'Post not found'
+        ], 404);
     }
 }
 

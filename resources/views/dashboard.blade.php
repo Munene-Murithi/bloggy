@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
+
 <main id="main">
-    <section class="single-post-content ">
-        <div class="container justify-content-center" style="display: flex; flex-flow: row wrap;">
-            <div class="row justify-content-center">
-                <div class="col-md-7 post-content" data-aos="fade-up">
+    <section class="single-post-content row">
+        <div class="container justify-content-cente col-md-6 " style="display: flex; flex-flow: row wrap;">
+            <div class="row justify-content-center" style="overflow-y: auto; max-height: 600px;">
+                <div class="col-md-10 post-content" data-aos="fade-up" >
+                                @if (session('success'))
+                                <div class="alert alert-success" id="flash-message">
+                                    {{ session('success') }}
+                                </div>
+                                @endif
                     @foreach ($posts as $post)
                     <div class="card mb-4">
                         <div class="card-body">
@@ -113,13 +119,30 @@
                     @endforeach
                 </div>
             </div>
+            <div class="mx-auto justify-content-between p-3" >
+                {{ $posts->links('pagination::bootstrap-5') }}
+            </div>
         </div>
+
+
+        <div class="col-2  p-3 mx-auto">
+            <h3 class="footer-heading">Categories</h3>
+            <ul class="footer-links list-unstyled">
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
+                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
+            </ul>
+        </div>
+        
     </section>
   
 
-    <div class="mx-auto justify-content-center col-3" >
-        {{ $posts->links('pagination::bootstrap-5') }}
-    </div>
+    
 </main>
 @endsection
 
@@ -130,5 +153,19 @@
             $('.comments-container').toggle();
         });
     });
+</script>
+<script>
+    // Check if the flash message element exists
+    var flashMessage = document.getElementById('flash-message');
+    if (flashMessage) {
+        // Fade out the flash message after 3 seconds (adjust the duration as needed)
+        setTimeout(function() {
+            flashMessage.style.opacity = '0';
+            // Remove the flash message from the DOM after fading out
+            setTimeout(function() {
+                flashMessage.remove();
+            }, 1000);
+        }, 3000);
+    }
 </script>
 

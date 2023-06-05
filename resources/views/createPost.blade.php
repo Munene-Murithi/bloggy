@@ -5,9 +5,9 @@
         <h1 class='mt-5 pt-5'>Create Post</h1>
 
         @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
+        <div class="alert alert-success" id="flash-message">
+            {{ session('success') }}
+        </div>
         @endif
 
         <form action="{{ route('storePost') }}" method="POST" enctype="multipart/form-data">
@@ -84,4 +84,19 @@
                 }
             }
         </script>
+        <script>
+            // Check if the flash message element exists
+            var flashMessage = document.getElementById('flash-message');
+            if (flashMessage) {
+                // Fade out the flash message after 3 seconds (adjust the duration as needed)
+                setTimeout(function() {
+                    flashMessage.style.opacity = '0';
+                    // Remove the flash message from the DOM after fading out
+                    setTimeout(function() {
+                        flashMessage.remove();
+                    }, 1000);
+                }, 3000);
+            }
+        </script>
+        
 @endsection

@@ -49,9 +49,9 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     @auth
-                    <li><a href="dashboard">Dashboard</a></li>
-                    <li><a href="createPost">New Post</a></li>
-                    <li><a href="profile">Profile</a></li>
+                    <li><a href="{{route('dashboard')}}">Dashboard</a></li>
+                    <li><a href="{{route('createPost')}}">New Post</a></li>
+                    <li><a href="{{route('profile')}}">Profile</a></li>
                     @endauth
 
                     <div>
@@ -136,4 +136,19 @@
 
     <!-- Template Main JS File -->
     <script src="./assets/js/main.js"></script>
+    <script>
+        // Check if the flash message element exists
+        var flashMessage = document.getElementById('flash-message');
+        if (flashMessage) {
+            // Fade out the flash message after 3 seconds (adjust the duration as needed)
+            setTimeout(function() {
+                flashMessage.style.opacity = '0';
+                // Remove the flash message from the DOM after fading out
+                setTimeout(function() {
+                    flashMessage.remove();
+                }, 1000);
+            }, 3000);
+        }
+    </script>
+    
 </body>

@@ -1,7 +1,7 @@
+@extends("layouts.app")
+@section("content")
 
 
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -24,11 +24,13 @@
     <link href="{{ asset('assets/vendor/aos/aoss.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS Files -->
-    <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('../assets/css/variables.css') }}" rel="stylesheet">
+    <link href="{{ asset('../assets/css/main.css') }}" rel="stylesheet">
 
     <title>{{ config('app.name') }}</title>
 </head>
+<body class="mt-5 pt-5">
+    
 <!-- Bootstrap 5 CSS CDN -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.7.0/dist/css/bootstrap.min.css">
 <div class='container col-5'>
@@ -57,7 +59,7 @@
 <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
 <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
 <script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('assets/js/main.js') }}"></script>
+<script src="{{ asset('../assets/js/main.js') }}"></script>
 </body>
     
-</html>
+@endsection
