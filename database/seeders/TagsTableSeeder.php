@@ -2,26 +2,32 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
-
+use App\Models\Tag;
 
 class TagsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        DB::table('tags')->insert([
-            ['name' => 'celebrity'],
-            ['name' => 'food'],
-            ['name' => 'travel'],
-            ['name' => 'politics'],
-            ['name' => 'sport'],
-            ['name' => 'culture'],
-            ['name' => 'business'],
-        ]);
+        $tags = [
+            'beauty',
+            'news',
+            'business',
+            'sports',
+            'technology',
+            'celebrity',
+            'movies',
+            'music',
+            'fashion',
+            'fitness',
+            'automotives',
+            'lifestyle',
+        ];
+
+        foreach ($tags as $tagName) {
+            $tag = new Tag;
+            $tag->name = $tagName;
+            $tag->save();
+        }
     }
 }

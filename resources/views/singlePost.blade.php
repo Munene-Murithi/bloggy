@@ -34,16 +34,19 @@
 @extends('layouts.app')
 @section('content')
 
-<body class="m-3  mt-5 pt-5">
-    @if (session('success'))
-    <div class="alert alert-success" id="flash-message">
+@if (session('success'))
+    <div class="alert alert-success col-6 mt-2 " id="flash-message">
         {{ session('success') }}
     </div>
     @endif
 
 <div class="row">
-<div class="card col-6 m-3" style="overflow-y: auto; max-height: 600px;">
+<div class="card col-6 m-3 mt-0 shadow" style="overflow-y: auto; max-height: 600px;">
+    
+    <body class="m-3  mt-5 pt-5">
+      
     <div class="card-body">
+        
         <div class="d-flex align-items-center mb-3">
             @if ($post->user->profile_photo)
             <img src="{{ asset('storage/uploads/' . $post->user->profile_photo) }}"

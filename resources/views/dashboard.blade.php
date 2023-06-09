@@ -4,9 +4,9 @@
 
 <main id="main">
     <section class="single-post-content row">
-        <div class="container justify-content-cente col-md-6 " style="display: flex; flex-flow: row wrap;">
+        <div class="container justify-content-start col-md-7">
             <div class="row justify-content-center" style="overflow-y: auto; max-height: 600px;">
-                <div class="col-md-10 post-content" data-aos="fade-up" >
+                <div class="col-md-8 post-content" data-aos="fade-up" >
                                 @if (session('success'))
                                 <div class="alert alert-success" id="flash-message">
                                     {{ session('success') }}
@@ -46,102 +46,36 @@
 
                             </form>
                             @endif
-                            {{-- <div class="col-md-12">
-                                @php
-                                $users = array();
-                                @endphp
-                                @foreach ($post->comments as $comment)
-                                @php
-                                $name = $comment->user->name ?? 'Unknown User';
-                                $user_comments = $users[$name] ?? array();
-                                array_push($user_comments, $comment);
-                                $users[$name] = $user_comments;
-                                @endphp
-                                @endforeach
-                                @if (count($users) > 0)
-                                <div class="comments-container mt-2 mb-2" style="display: none;">
-                                    @foreach ($users as $name => $user_comments)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h4>
-                                                <div class="d-flex align-items-center mb-3">
-                                                    @if ($user_comments[0]->user->profile_photo)
-                                                    <img src="{{ asset('storage/uploads/' . $user_comments[0]->user->profile_photo) }}"
-                                                        alt="Profile Photo" class="rounded-circle profile-photo"
-                                                        style="height: 40px; width: 40px;">
-                                                    @else
-                                                    <img src="{{ asset('default-profile-photo.png') }}"
-                                                        alt="Default Profile Photo"
-                                                        class="rounded-circle profile-photo"
-                                                        style="height: 40px; width: 40px;">
-                                                    @endif
-                                                    <span class="ms-2">{{ $name }}</span>
-                                                </div>
-                                            </h4>
-                                            @foreach ($user_comments as $comment)
-                                            <div class="comment-container d-flex justify-content-between">
-                                                <div class="comment">{{ $comment->body }}</div>
-                                                <div class="time">{{ $comment->created_at->diffForHumans() }}</div>
-                                                @if (Auth::check() && Auth::user()->id === $comment->user_id)
-                                                <form action="{{ route('comments.destroy', $comment) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger float-right">Delete</button>
-                                                </form>
-                                                @endif
-                                            </div>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                </div>
-                                <button class="btn btn-primary mt-2 toggle-comments mb-2">Toggle
-                                    {{ $post->comments->count() }} Comments</button>
-                                @endif
-                            </div> --}}
-                            {{-- <div class="col-md-12">
-                                <form action="{{ route('storeComment') }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <div class="form-group">
-                                        <textarea name="body" rows="2" cols="50" class="form-control mt-2"
-                                            placeholder="Write a comment"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
-                                </form>
-                            </div> --}}
-                            {{-- <a href="{{ route('singlePost', $post->id) }}"><button class="btn btn-primary mt-2 mb-2">Toggle
-                                {{ $post->comments->count() }} Comments</button></a> --}}
+                        
                                 <div class="text-secondary" @disabled(true)>click post to view and make comments</div>
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
-            <div class="mx-auto justify-content-between p-3" >
+            <div class="mx-auto justify-content-between ms-5 me-5" >
                 {{ $posts->links('pagination::bootstrap-5') }}
             </div>
         </div>
 
 
-        <div class="col-2  p-3 mx-auto">
-            <h3 class="footer-heading">Categories</h3>
-            <ul class="footer-links list-unstyled">
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Business</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Culture</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Sport</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Food</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Politics</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Celebrity</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Startups</a></li>
-                <li><a href="category.html"><i class="bi bi-chevron-right"></i> Travel</a></li>
-            </ul>
+        <div class="col-4 p-3 ms-4 mx-auto card">
+            <h3 class="card-header text-center">Categories</h3>
+            <table class="table table-striped">
+                <tbody>
+                    @foreach ($tags as $tag)
+                    <tr>
+                        <td><a href="{{ route('posts.by.tag', ['tag' => $tag->name]) }}" class="text-dark text-decoration-none" style="font-size: 16px;">{{ $tag->name }}</a></td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
+        
         
     </section>
   
-
+    
     
 </main>
 @endsection

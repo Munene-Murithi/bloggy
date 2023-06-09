@@ -19,20 +19,20 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="./assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="./assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="./assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="./assets/vendor/aos/aoss.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Template Main CSS Files -->
-    <link href="./assets/css/variables.css" rel="stylesheet">
-    <link href="./assets/css/main.css" rel="stylesheet">
+    <link href="../assets/css/variables.css" rel="stylesheet">
+    <link href="../assets/css/main.css" rel="stylesheet">
 
 
     <title>{{ config('app.name') }}</title>
 
-   
+
 </head>
 
 <body>
@@ -40,18 +40,18 @@
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-            <a href="/" class="logo d-flex align-items-center">
+            <a href="/" class="logo d-flex align-items-center text-decoration-none">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="./assets/img/logo.png" alt="">
+                <img src="../assets/img/logo.png" alt="">
                 <h1>{{ config("app.name") }}</h1>
             </a>
 
             <nav id="navbar" class="navbar">
                 <ul>
                     @auth
-                    <li><a href="{{route('dashboard')}}">Dashboard</a></li>
-                    <li><a href="{{route('createPost')}}">New Post</a></li>
-                    <li><a href="{{route('profile')}}">Profile</a></li>
+                    <li><a href="{{route('dashboard')}}" class="text-decoration-none">Dashboard</a></li>
+                    <li><a href="{{route('createPost')}}" class="text-decoration-none">New Post</a></li>
+                    <li><a href="{{route('profile')}}" class="text-decoration-none">Profile</a></li>
                     @endauth
 
                     <div>
@@ -67,12 +67,15 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <!-- Add the dropdown-menu class -->
-                                <li><a class="dropdown-item" href="#">Phone: {{ Auth::user()->phone }}</a></li>
-                                <li><a class="dropdown-item" href="#">Email: {{ Auth::user()->email }}</a></li>
+                                <li><a class="dropdown-item" href="#" class="text-decoration-none">Phone:
+                                        {{ Auth::user()->phone }}</a></li>
+                                <li><a class="dropdown-item" href="#" class="text-decoration-none">Email:
+                                        {{ Auth::user()->email }}</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        class="text-decoration-none">Logout</a></li>
 
                             </ul>
                         </li>
@@ -89,16 +92,19 @@
                         @endguest
                     </div>
 
-                    <li><a href="aboutUs">About Us</a></li>
-                    <li><a href="contact">Contact</a></li>
+                    <li><a href="aboutUs" class="text-decoration-none">About Us</a></li>
+                    <li><a href="contact" class="text-decoration-none">Contact</a></li>
 
                 </ul>
             </nav><!-- .navbar -->
 
             <div class="position-relative">
-                <a href="https://github.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2"><span class="bi-github"></span></a>
-                <a href="https://www.twitter.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2"> <span class="bi-twitter"></span></a>
-                <a href="https://www.instagram.com/_sam.iy_" target="_blank" rel="noopener noreferrer" class="mx-2"><span class="bi-instagram"></span></a>
+                <a href="https://github.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2"><span
+                        class="bi-github"></span></a>
+                <a href="https://www.twitter.com/randdridley" target="_blank" rel="noopener noreferrer" class="mx-2">
+                    <span class="bi-twitter"></span></a>
+                <a href="https://www.instagram.com/_sam.iy_" target="_blank" rel="noopener noreferrer"
+                    class="mx-2"><span class="bi-instagram"></span></a>
 
                 <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -112,6 +118,8 @@
                     </form>
                 </div><!-- End Search Form -->
 
+
+
             </div>
 
         </div>
@@ -119,7 +127,7 @@
     </header>
 
     @yield('content')
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
@@ -127,6 +135,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+
 
     <script src="./assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/vendor/swiper/swiper-bundle.min.js"></script>
@@ -141,14 +150,14 @@
         var flashMessage = document.getElementById('flash-message');
         if (flashMessage) {
             // Fade out the flash message after 3 seconds (adjust the duration as needed)
-            setTimeout(function() {
+            setTimeout(function () {
                 flashMessage.style.opacity = '0';
                 // Remove the flash message from the DOM after fading out
-                setTimeout(function() {
+                setTimeout(function () {
                     flashMessage.remove();
                 }, 1000);
             }, 3000);
         }
     </script>
-    
+
 </body>

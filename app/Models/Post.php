@@ -8,6 +8,8 @@ use App\Models\Tag;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use \Conner\Tagging\Taggable;
+
 
 class Post extends Model
 {
@@ -34,13 +36,18 @@ class Post extends Model
     }
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'tags');
+        return $this->belongsToMany(Tag::class, 'post_tag', 'post_id', 'tag_id');
     }
+    
 
     protected $fillable = [
         'title',
         'body',
         'file',
+        'title',
+        'tags',
+        'description'
        
     ];
+
 }

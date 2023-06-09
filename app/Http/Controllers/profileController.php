@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Post;
+
 
 class ProfileController extends Controller
 {
     public function showProfile()
     {
-        return view("profile");
+        $posts = Post::where('user_id', Auth::id())->paginate(1);
+
+        return view('profile', compact('posts'));
+        // return view("profile");
     }
     
     public function updatePhoto(Request $request)
@@ -37,4 +43,6 @@ class ProfileController extends Controller
 
         return redirect()->back()->with('success', 'Profile photo uploaded successfully.');
     }
+
+
 }

@@ -51,6 +51,8 @@
         Route::resource('posts', postController::class);
         Route::get('/posts/{post}/edit', [postController::class, 'edit'])->name('posts.edit');
         Route::put('/posts/{post}', [postController::class, 'update'])->name('posts.update');
+        Route::get('/posts/tag/{tag}',  [postController::class, 'postsByTag'])->name('posts.by.tag');
+
         
 
 

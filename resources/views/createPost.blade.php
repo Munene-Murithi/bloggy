@@ -42,6 +42,44 @@
                     @endforeach
                 </div>
             </div> --}}
+            {{-- <div class="form-group">
+                <label for="tags">Tags:</label>
+                <select id="tags" name="tags" class="form-select">
+                    <option selected disabled>Select a category</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="news">News</option>
+                    <option value="business">Business</option>
+                    <option value="sports">Sports</option>
+                    <option value="technology">Technology</option>
+                    <option value="celebrity">Celebrity</option>
+                    <option value="movies">Movies</option>
+                    <option value="music">Music</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="fitness">Fitness</option>
+                    <option value="automotives">Automotives</option>
+                    <option value="lifestyle">Lifestyle</option>
+                </select>
+                @if ($errors->has('tags'))
+                    <span class="text-danger">{{ $errors->first('tags') }}</span>
+                @endif
+            </div> --}}
+
+            <div class="form-group">
+                <label for="tags">Tags:</label>
+                <select id="tags" name="tags" class="form-select">
+                    <option selected disabled>Select tags</option>
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+                @if ($errors->has('tags'))
+                    <span class="text-danger">{{ $errors->first('tags') }}</span>
+                @endif
+            </div>
+            
+            
+            
+            
             
             
 
@@ -98,5 +136,7 @@
                 }, 3000);
             }
         </script>
+       
+        
         
 @endsection
